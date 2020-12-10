@@ -65,10 +65,9 @@
 				{
 					echo "<a href='commentaires.php?page=$i'> $i </a>";
 				}
+				echo "<a href='commentaires.php?page=".($page+1)."'> Suivante </a>";
+				echo "<a href='commentaires.php?page=$nbpages'> Fin </a>";
 			}
-			echo "<a href='commentaires.php?page=".($page+1)."'> Suivante </a>";
-			echo "<a href='commentaires.php?page=$nbpages'> Fin </a>";
-			
 			mysqli_close($lien);
 		?>	
 	</body>

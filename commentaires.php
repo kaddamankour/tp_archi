@@ -48,7 +48,7 @@
 				}
 			}
 			
-			$req="SELECT * FROM comment";
+			$req="SELECT * FROM commentaires";
 			$res=mysqli_query($lien,$req);
 			if(!$res)
 			{

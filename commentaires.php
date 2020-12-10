@@ -14,7 +14,7 @@
 			if(isset($_POST['envoyer']))
 			{
 				$nom=trim(htmlentities(mysqli_real_escape_string($lien,$_POST['nom'])));
-				$contenu=trim(htmlentities(mysqli_real_escape_string($lien,$_POST['contenu'])));
+				$commentaire=trim(htmlentities(mysqli_real_escape_string($lien,$_POST['commentaire'])));
 				$req="INSERT INTO commentaires VALUES (NULL,'$nom','$commentaire')";
 				$res=mysqli_query($lien,$req);
 				if(!$res)
@@ -33,7 +33,7 @@
 			}
 			$commparpage=5;
 			$premiercomm=$commparpage*($page-1);
-			$req="SELECT * FROM comment ORDER BY id LIMIT $premiercomm,$commparpage";/* LIMIT dit ou je commence et combien j'en prends*/
+			$req="SELECT * FROM commentaires ORDER BY id LIMIT $premiercomm,$commparpage";/* LIMIT dit ou je commence et combien j'en prends*/
 			$res=mysqli_query($lien,$req);
 			if(!$res)
 			{

@@ -11,6 +11,8 @@
 		</form>
 		<?php
 			$lien=mysqli_connect("localhost","root","root","tp");
+			
+			//Ajout d'un commentaire
 			if(isset($_POST['envoyer']))
 			{
 				$nom=trim(htmlentities(mysqli_real_escape_string($lien,$_POST['nom'])));
@@ -23,6 +25,7 @@
 				}
 			}
 			
+			//Quelle page je suis et quels commentaires prendre
 			if(!isset($_GET['page']))
 			{
 				$page=1;
@@ -33,7 +36,7 @@
 			}
 			$commparpage=5;
 			$premiercomm=$commparpage*($page-1);
-			$req="SELECT * FROM commentaires ORDER BY id LIMIT $premiercomm,$commparpage";/* LIMIT dit ou je commence et combien j'en prends*/
+			$req="SELECT * FROM commentaires ORDER BY id LIMIT $premiercomm,$commparpage";//LIMIT dit ou je commence et combien j'en prends
 			$res=mysqli_query($lien,$req);
 			if(!$res)
 			{
@@ -48,6 +51,7 @@
 				}
 			}
 			
+			//Affichage des numÃ©ros de page
 			$req="SELECT * FROM commentaires";
 			$res=mysqli_query($lien,$req);
 			if(!$res)
@@ -56,11 +60,11 @@
 			}
 			else
 			{
-				$nbcomm=mysqli_num_rows($res); // Retourne le nombre de lignes dans un résultat. 
-				$nbpages=ceil($nbcomm/$commparpage); /*Ceil arrondit a l'entier supérieur*/
+				$nbcomm=mysqli_num_rows($res); // Retourne le nombre de lignes dans un rÃ©sultat. 
+				$nbpages=ceil($nbcomm/$commparpage); /*Ceil arrondit a l'entier supÃ©rieur*/
 				echo "<br> Pages : ";
-				echo "<a href='commentaires.php?page=1'> Début </a>";
-				echo "<a href='commentaires.php?page=".($page-1)."'> Précédente </a>";
+				echo "<a href='commentaires.php?page=1'> DÃ©but </a>";
+				echo "<a href='commentaires.php?page=".($page-1)."'> PrÃ©cÃ©dente </a>";
 				for($i=($page-2);$i<=($page+2);$i++)
 				{
 					echo "<a href='commentaires.php?page=$i'> $i </a>";
